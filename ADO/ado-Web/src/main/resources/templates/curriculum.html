@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reset-css.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Natalia Dinareli</title>
+  </head>
+  <body>
+    <div id="body">
+      <aside>
+        <div>
+          <img
+            class="profile-picture"
+            src="./img/photo.jpg"
+            alt="Foto de perfil"
+          />
+        </div>
+        <div>
+          <a
+            href="https://www.linkedin.com/in/natalia-dinareli/"
+          ></a>
+          <a href="https://github.com/Dinareli"></a>
+        </div>
+      </aside>
+      <main>
+        <div id="sections">
+          <section>
+            <h1 class="name" th:text="${name}"/>
+            <hr>
+            <ul>
+              <li th:text="${birthDate}"/>
+              <li th:text="${email}"/>
+            </ul>
+          </section>
+          <hr>
+          <section>
+            <h2>Formação</h2>
+            <ul th:each="course: ${courses}">
+              <li th:text="${course.title}"/> <span th:text="${course.institute}" />; <span th:text="${course.endYear}" />
+              <ul class="sublist" th:each="capacity: ${course.capacities}">
+                <li th:text="${capacity}"/>
+              </ul>
+            </ul>
+          </section>
+          <hr>
+          <section>
+            <h2>Experiência Profissonal</h2>
+            <ul th:each="profession: ${professions}">
+              <li th:text="${profession.role}"/> <span th:text="${profession.company}" />; <span th:text="${profession.duration}" />
+              <ul class="sublist" th:each="capacity: ${profession.capacities}">
+                <li th:text="${capacity}"/>
+              </ul>
+            </ul>
+          </section>
+          <hr>
+          <section>
+            <h2>Conhecimentos</h2>
+            <div id="knowledge">
+              <div class="knowledge">
+                <h2>Linguagens</h2>
+                <ul th:each="tool: ${tools}">
+                  <li th:text="${tool}"/>
+                </ul>
+              </div>
+              <div class="knowledge">
+                <h2>Idiomas</h2>
+                <ul th:each="language: ${languages}">
+                  <li th:text="${language}"/>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
